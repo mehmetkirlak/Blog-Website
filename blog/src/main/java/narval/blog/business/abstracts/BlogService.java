@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface BlogService {
     DataResult<List<Blog>> getAll();
+    DataResult<List<Blog>> getAllSorted();
+    DataResult<List<Blog>> getAll(int pageNo, int pageSize);
     Result add(Blog blog);
-
     DataResult<Blog> getById(int id);
-
 }

@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "post")
+@Table(name = "posts")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Blog {
@@ -29,10 +30,16 @@ public class Blog {
     @Column(name="body")
     private String body;
 
+    @Column(name = "authorId")
+    private int authorId;
+
     @Column(name="createdAt")
     private String createdAt;
 
     @Column(name="isPublished")
     private int isPublished;
+
+    @OneToMany(mappedBy = "blog")
+    private List<Comment> comments;
 
 }
