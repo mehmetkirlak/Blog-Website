@@ -3,13 +3,12 @@ package narval.blog.api.controllers;
 import narval.blog.business.abstracts.BlogService;
 import narval.blog.core.utilities.results.DataResult;
 import narval.blog.core.utilities.results.Result;
-import narval.blog.core.utilities.results.SuccessDataResult;
 import narval.blog.entities.concretes.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.crypto.Data;
+
 import java.util.List;
 
 @RestController

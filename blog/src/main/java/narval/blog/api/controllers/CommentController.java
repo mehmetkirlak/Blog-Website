@@ -5,7 +5,6 @@ import narval.blog.core.utilities.results.DataResult;
 import narval.blog.core.utilities.results.SuccessDataResult;
 import narval.blog.entities.concretes.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
