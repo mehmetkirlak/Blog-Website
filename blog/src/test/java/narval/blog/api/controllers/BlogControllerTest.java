@@ -8,6 +8,7 @@ import narval.blog.entities.concretes.Blog;
 import narval.blog.entities.concretes.Comment;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +43,9 @@ class BlogControllerTest {
     @MockBean
     private BlogDao blogDao;
 
+    @MockBean
+    private BlogController blogController;
+
     @Test
     void getAll() {
         Comment comment1 = new Comment(1,"test content","01-01-2001",1, 'A', null);
@@ -64,10 +68,34 @@ class BlogControllerTest {
 
     @Test
     void add() {
+        Comment comment1 = new Comment(1,"test content","01-01-2001",1, 'A', null);
+        List<Comment> commentList = new ArrayList<Comment>();
+        List<Blog> blogList = new ArrayList<Blog>();
+        commentList.add(comment1);
+        Blog blog = new Blog(1,"test title","testsource.png","test body",1,"01-01-2001",0,commentList);
+        comment1.setBlog(blog);
+        blogList.add(blog);
+        Blog blogMock = mock(Blog.class);
+
+        when(blogDao.save(ArgumentMatchers.any(Blog.class))).thenReturn(blogMock);
     }
 
     @Test
     void getById() {
+        Comment comment1 = new Comment(1,"test content","01-01-2001",1, 'A', null);
+        List<Comment> commentList = new ArrayList<Comment>();
+        List<Blog> blogList = new ArrayList<Blog>();
+        commentList.add(comment1);
+        Blog blog = new Blog(1,"test title","testsource.png","test body",1,"01-01-2001",0,commentList);
+        comment1.setBlog(blog);
+        blogList.add(blog);
+        Blog blogMock = mock(Blog.class);
+
+
+
+        assertEquals(blogMock.getId(),1);
+
+        when(blogDao.getById(1)).thenReturn((blog));
     }
 
     @Test
