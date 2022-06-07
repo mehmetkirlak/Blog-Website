@@ -1,5 +1,6 @@
 package narval.blog.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="commentId")
     private int id;;
 
     @Column(name = "content")
@@ -32,6 +33,7 @@ public class Comment {
 
     @ManyToOne()
     @JoinColumn(name = "blogId")
+    @JsonIgnore
     private Blog blog;
 
 }
