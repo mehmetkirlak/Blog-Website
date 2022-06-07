@@ -1,0 +1,5 @@
+
+Y
+java:S2166"CRename this class to remove "Exception" or correct its inheritance.(ùªŸú
+é
+java:S6206"qRefactor this class declaration to use 'record ApiException(String message, Throwable throwable, HttpStatus...)'.(ùªŸú8∏‚Ü‚ë0
