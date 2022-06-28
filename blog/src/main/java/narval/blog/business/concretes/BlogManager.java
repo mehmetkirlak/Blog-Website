@@ -54,7 +54,7 @@ public class BlogManager implements BlogService {
 
     @Override
     public DataResult<Blog> getById(int id) {
-        this.blogDao.getById(id);
+        this.blogDao.findById(id);
         return new SuccessDataResult<>("Data getirildi");
     }
 

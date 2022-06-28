@@ -7,9 +7,6 @@ import narval.blog.dataAccess.abstracts.UserDao;
 import narval.blog.entities.concretes.Blog;
 import narval.blog.entities.concretes.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -6,7 +6,6 @@ import narval.blog.core.utilities.results.Result;
 import narval.blog.entities.concretes.Blog;
 import narval.blog.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/blogs")
+@CrossOrigin
 public class BlogController {
 
     private BlogService blogService;
@@ -23,7 +23,7 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping()
     public DataResult<List<Blog>> getAll() throws ApiRequestException {
         DataResult<List<Blog>> result = this.blogService.getAll();
         if (result.getData().isEmpty()) {
@@ -32,7 +32,6 @@ public class BlogController {
             return this.blogService.getAll();
     }
 
-    @PreAuthorize("hasRole('USER')")
     @PostMapping("/add")
     public Result add(@RequestBody Blog blog){
         if (blog.getBody().isEmpty() || blog.getBody().isEmpty()) {
@@ -42,9 +41,13 @@ public class BlogController {
     }
 
     @GetMapping("/getbyid")
-    @PreAuthorize("permitAll()")
     public DataResult<Blog> getById(@RequestParam int id){
         return this.blogService.getById(id);
+    }
+
+    @GetMapping("/{id}")
+    public Blog getBlog(@PathVariable int id) {
+        return blogService.getById(id).getData();
     }
 
     @GetMapping("/getallsorted")
